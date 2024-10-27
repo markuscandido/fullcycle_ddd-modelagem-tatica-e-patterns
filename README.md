@@ -4,7 +4,7 @@ Como modelar um software utilizando DDD e como aplicar os principais patterns qu
 
 Síntese do curso **DDD: Modelagem Tática e Patterns**, parte integrante do [FullCycle 3.0](https://curso.fullcycle.com.br/curso-fullcycle/) by [Full Cycle](https://fullcycle.com.br/)
 
-## Domain Driven Design (DDD): Compreendendo os Elementos Táticos e a Ressignificação de Conceitos
+## Introdução: Domain Driven Design (DDD): Compreendendo os Elementos Táticos e a Ressignificação de Conceitos
 
 **Introdução ao DDD Tático**  
 O **Domain Driven Design (DDD)** é uma abordagem utilizada para lidar com a complexidade no desenvolvimento de software, especialmente em grandes projetos. Essa técnica vai além de apenas codificar; envolve um profundo entendimento do domínio de negócio, a criação de uma linguagem universal e a identificação de contextos delimitados (*Bounded Contexts*). Após o desenvolvimento estratégico, é essencial aplicar padrões táticos de design, que garantem a qualidade e a coerência na implementação de soluções. Neste artigo, abordaremos o papel dos elementos táticos no DDD, seus desafios e a importância de ressignificar conceitos tradicionais de programação.
@@ -30,7 +30,7 @@ Esses padrões, quando aplicados de forma correta, ajudam a estruturar melhor o 
 **Conclusão**  
 Aplicar o DDD corretamente não é simplesmente adotar padrões de design e sair codificando. Envolve uma compreensão profunda do problema a ser resolvido, uma boa delimitação dos contextos e, finalmente, a aplicação de elementos táticos que ajudem a representar as regras de negócios de forma eficaz. Ao ressignificar conceitos tradicionais de programação e abraçar os padrões de DDD, os desenvolvedores conseguem criar soluções mais robustas e alinhadas com as reais necessidades do domínio.
 
-## Entidades no Design Orientado ao Domínio (DDD)
+## Entidades: Entidades no Design Orientado ao Domínio (DDD)
 
 O conceito de **entidade** é fundamental no desenvolvimento de software, especialmente no contexto do *Domain Driven Design* (DDD). No entanto, há uma necessidade de desmistificar e redefinir o que entendemos como "entidade", afastando-nos das noções tradicionais que muitos desenvolvedores possuem.
 
@@ -82,7 +82,7 @@ Ao desenvolver sistemas complexos, especialmente com uma abordagem de *Domain Dr
 
 **Conclusão**: A principal lição de modelagem em sistemas baseados em DDD é focar no **comportamento** e na **consistência** das entidades. O uso de métodos que reflitam as intenções do negócio, a auto-validação e a separação entre entidades de negócio e persistência são práticas essenciais para garantir que o sistema expresse corretamente as regras e os fluxos do domínio.
 
-## A Importância dos Value Objects na Modelagem de Domínio
+## Value Objects: A Importância dos Value Objects na Modelagem de Domínio
 
 Quando modelamos sistemas, muitas vezes recorremos a tipos primitivos como strings, inteiros ou booleanos para representar dados, como nomes, endereços ou CPFs. Embora seja uma prática comum, essa abordagem pode empobrecer a expressividade do código, dificultando a clareza do domínio representado. Aqui entram os **Value Objects**, ou Objetos de Valor (VOs), uma solução que promove uma modelagem mais rica e expressiva, essencialmente no contexto do **Domain-Driven Design (DDD)**.
 
@@ -106,7 +106,7 @@ Em resumo, os Value Objects são uma ferramenta poderosa para modelar um domíni
 
 **Conclusão**: Ao evitar o uso excessivo de tipos primitivos e adotar Value Objects, conseguimos criar sistemas mais robustos, expressivos e fáceis de manter. Essa prática, amplamente recomendada no **DDD**, nos ajuda a modelar o domínio de forma que ele reflita de maneira clara as regras de negócio, promovendo um desenvolvimento mais intuitivo e correto.
 
-## Entendendo Agregados no Design de Software
+## Agregados: Entendendo Agregados no Design de Software
 
 No design de software orientado a objetos, um conceito fundamental é o de "agregados". Um agregado é um grupo de objetos relacionados que devem ser tratados como uma unidade para operações de mudança de estado. Este conceito é útil para estruturar sistemas complexos, garantindo que certos grupos de entidades e objetos de valor se comportem como uma unidade coesa.
 
@@ -119,3 +119,179 @@ No design de software orientado a objetos, um conceito fundamental é o de "agre
 Esse tipo de organização ajuda a manter o software modular e a garantir que as transações dentro do sistema sejam atômicas e coesas, onde mudanças ocorrem de maneira consistente dentro de um agregado, respeitando suas dependências internas.
 
 **Conclusão**: Agregados são uma ferramenta poderosa no design de sistemas, especialmente em domínios complexos. Eles permitem gerenciar de forma eficiente as interações entre entidades e objetos de valor, facilitando a evolução do software com coesão e clareza. A correta aplicação desse conceito pode transformar a maneira como sistemas são planejados e implementados, garantindo maior robustez e clareza.
+
+## Avançando com testes
+
+Os testes automatizados são uma ferramenta essencial para garantir a qualidade de software, especialmente em projetos complexos. Neste artigo, exploraremos a importância dos testes automatizados e como configurá-los em um ambiente TypeScript utilizando o Jest, uma das ferramentas mais populares para essa tarefa.
+
+**Introdução aos Testes Automatizados**: A medida que os projetos crescem em complexidade, como os envolvendo ordens, itens, clientes e endereços, o risco de perder tempo com erros e retrabalho aumenta. Testes automatizados são essenciais para garantir que, à medida que o desenvolvimento avança, funcionalidades existentes não sejam quebradas. Essa prática não apenas melhora a qualidade do código, mas também aumenta a confiança da equipe no desenvolvimento contínuo.
+
+O objetivo deste guia é configurar um ambiente de testes de forma simples e eficiente, cobrindo todo o código existente para permitir uma transição suave para futuras implementações.
+
+**Preparando o Ambiente**: Para começar, o ambiente de desenvolvimento precisa ser configurado adequadamente. O primeiro passo é instalar as ferramentas necessárias para executar os testes. No caso do TypeScript, o Jest é uma escolha popular por sua simplicidade e eficiência.
+
+**Instalação do Jest e Suporte ao TypeScript**: Para instalar o Jest e garantir que ele funcione bem com TypeScript, é necessário rodar o seguinte comando no terminal:
+
+```bash
+npm install jest @types/jest ts-node --save-dev
+```
+
+Isso adiciona o Jest como o "runner" de testes, bem como as tipagens necessárias para trabalhar com TypeScript. É importante incluir a flag `--save-dev`, pois essas dependências são específicas do ambiente de desenvolvimento.
+
+**Otimização com SWC**: Uma outra otimização interessante é o uso do SWC, um compilador em Rust que permite transpilar o código mais rapidamente. Desenvolvido pela equipe da Vercel, o SWC aumenta a performance dos testes, especialmente em projetos maiores.
+
+Para adicionar o SWC ao projeto, execute o seguinte comando:
+
+```bash
+npm install @swc/jest @swc/cli @swc/core --save-dev
+```
+
+Com isso, o ambiente de testes estará configurado para rodar de forma mais eficiente.
+
+**Configuração do Jest**: Após a instalação das dependências, é necessário inicializar o Jest para gerar um arquivo de configuração. Isso pode ser feito com o seguinte comando:
+
+```bash
+npx jest --init
+```
+
+Durante o processo, o Jest fará algumas perguntas importantes, como:
+
+- **Gerar arquivo de configuração para TypeScript?** Sim
+- **Ambiente de execução?** Node.js
+- **Cobertura de testes?** Não (para esse exemplo, não é necessário, mas pode ser habilitado em projetos mais avançados)
+- **Limpar mocs e instâncias antes de cada teste?** Sim
+
+O arquivo `jest.config.ts` será gerado, contendo todas as configurações para rodar os testes no ambiente TypeScript. Um ajuste importante nesse arquivo é a adição de um *transformer* para que o Jest utilize o SWC, garantindo uma execução mais rápida dos testes:
+
+```json
+transform: {
+  "^.+\\.(t|j)sx?$": ["@swc/jest"],
+}
+```
+
+**Escrevendo o Primeiro Teste**: Com o ambiente configurado, é hora de escrever o primeiro teste. Uma boa prática é manter os arquivos de teste próximos aos arquivos de código que eles testam, embora criar uma pasta separada para testes também seja comum.
+
+Crie um arquivo de teste para um cliente (`customer.spec.ts`) e adicione o seguinte código:
+
+```typescript
+describe('CustomerUnitTests', () => {
+  test('should get 1 as result', () => {
+    const result = 1;
+    expect(result).toBe(1);
+  });
+});
+```
+
+Este é um teste simples que valida que o valor `1` é igual a `1`. Ele serve apenas como um exemplo inicial para verificar se o ambiente está configurado corretamente.
+
+**Executando os Testes**: Agora que o primeiro teste foi escrito, execute o comando abaixo para rodar os testes:
+
+```bash
+npm test
+```
+
+O Jest encontrará o arquivo de teste e executará o teste, retornando a mensagem de sucesso se tudo estiver correto. Esse primeiro passo garante que o ambiente está pronto para suportar testes mais complexos no futuro.
+
+**Conclusão**: Testes automatizados são fundamentais para o sucesso de qualquer projeto de software, especialmente em ambientes que exigem escalabilidade e manutenção contínua. A configuração do Jest com TypeScript, aliada ao uso de ferramentas como o SWC, proporciona um ambiente ágil e eficiente para o desenvolvimento de testes.
+
+Com essa base estabelecida, o próximo passo é garantir a cobertura de testes para todas as funcionalidades existentes, proporcionando maior segurança no desenvolvimento de novos recursos.
+
+## Domain Services no Domain Driven Design: Entendendo seu Papel
+
+**Introdução**: No desenvolvimento de software, especialmente ao adotar o *Domain Driven Design* (DDD), é comum se deparar com o conceito de *Domain Services*. Apesar de parecer confuso no início, é crucial entender o papel desses serviços para garantir que a lógica de negócio seja adequadamente distribuída e as entidades não fiquem sobrecarregadas. Este artigo explora o conceito de *Domain Services*, destacando sua importância e como utilizá-los de forma eficiente.
+
+**O que são Domain Services?**: Um *Domain Service* é uma operação sem estado que realiza uma tarefa específica relacionada ao domínio do negócio. Ele é utilizado quando uma operação ou transformação significativa não é responsabilidade natural de uma entidade ou de um objeto de valor. Isso geralmente ocorre quando a operação envolve mais de uma entidade ou não se encaixa diretamente nos métodos de um agregado.
+
+Tanto Vaughn Vernon, em seu livro *Implementing Domain-Driven Design*, quanto Eric Evans, no clássico *Domain-Driven Design: Tackling Complexity in the Heart of Software*, reforçam que os *Domain Services* devem ser usados para encapsular essa lógica de negócio que não se encaixa em entidades individuais. Eles também enfatizam que esses serviços devem ser *stateless*, ou seja, não armazenar estado, apenas executar operações e retornar resultados.
+
+**Quando Utilizar um Domain Service?**: A principal indicação para criar um *Domain Service* ocorre quando uma operação não faz sentido como um método dentro de uma entidade ou agregado. Exemplos incluem:
+
+1. **Operações que envolvem múltiplas entidades**: Se uma ação afeta várias entidades simultaneamente, é um indicativo de que um *Domain Service* pode ser necessário. Por exemplo, um ajuste de preços para todos os produtos de um catálogo.
+  
+2. **Cálculos complexos que envolvem múltiplas entidades**: Imagine um cenário onde você precisa calcular a média de valores em ordens de serviço ou faturamento total. Esse tipo de operação, que envolve dados de várias entidades, é melhor tratada por um *Domain Service*.
+
+3. **Operações em lote**: Quando você precisa aplicar uma ação a um conjunto de entidades, como uma atualização em massa de preços, é mais apropriado delegar essa lógica para um serviço de domínio.
+
+**Cuidados ao Utilizar Domain Services**: É importante evitar cair na armadilha de usar *Domain Services* de maneira excessiva. Se seu projeto tiver muitos desses serviços, isso pode ser um indício de que suas entidades estão anêmicas, ou seja, com pouca lógica de negócio. Nesse caso, as entidades podem estar servindo apenas como recipientes de dados, com a lógica sendo movida para os serviços, o que é um *bad smell* no design orientado a objetos.
+
+Um bom design deve garantir que as entidades sejam ricas em comportamento e contenham a lógica relacionada diretamente à elas. *Domain Services* devem ser usados com moderação, apenas quando a lógica não pode ser atribuída a uma entidade específica.
+
+**Atributos de um Domain Service Bem Projetado**:
+
+1. **Stateless**: Um *Domain Service* deve ser sem estado, ou seja, não deve manter dados entre as chamadas de métodos. Toda a lógica de negócio envolvendo estado deve residir nas entidades e agregados.
+
+2. **Parte da Ubiquitous Language**: A interface e os métodos do *Domain Service* devem refletir a linguagem ubíqua do domínio, garantindo que o código seja compreensível tanto para desenvolvedores quanto para especialistas do negócio.
+
+3. **Métodos Simples e Claros**: Muitas vezes, os métodos em um *Domain Service* podem ser implementados de forma estática, já que eles não dependem de dados persistentes no serviço em si.
+
+**Conclusão**: Os *Domain Services* são componentes essenciais no DDD, servindo para lidar com operações que não fazem parte da responsabilidade natural de uma entidade ou agregado. No entanto, é fundamental usá-los com cautela para evitar a criação de entidades anêmicas. Ao manter esses serviços sem estado e focados em tarefas específicas do domínio, você garante uma arquitetura mais coesa e fácil de manter.
+
+Este conceito será melhor explorado com exemplos práticos, onde criaremos serviços de domínio para consolidar o entendimento sobre como e quando utilizá-los. Fique atento para o próximo artigo, onde mergulharemos no código e veremos esses princípios em ação!
+
+### Implementando um Product Service com Domain Services em TypeScript
+
+No desenvolvimento de aplicações orientadas a domínios, a arquitetura deve estar alinhada às necessidades do negócio e a forma como ele se comporta. Um exemplo comum é o ajuste de preços de produtos, onde devemos aplicar lógicas de negócio como aumento percentual de forma eficiente. Vamos explorar uma implementação prática dessa solução, utilizando Domain Services em TypeScript.
+
+**Definição do Problema**: Imaginemos que temos uma lista de produtos e precisamos aplicar um aumento de 10% no preço de todos eles. Uma solução imediata seria adicionar um método na entidade Produto, como `IncreasePrice`, que receberia a porcentagem e atualizaria o preço individualmente. Porém, essa abordagem se limita a um único produto por vez.
+
+Mas, e se precisarmos modificar o preço de **todos** os produtos de uma única vez? A solução se torna mais complexa. Aqui, entra em cena o conceito de **Domain Services**, uma camada responsável por realizar operações que envolvem múltiplas entidades ou lógica de negócio que não pertence diretamente a uma única entidade.
+
+**Implementação do Product Service**: A primeira etapa dessa implementação é definir a estrutura de teste para o nosso serviço de produto, garantindo que a lógica de aumento de preços funcione como esperado. O código de teste pode ser visto como segue:
+
+```typescript
+describe('ProductService', () => {
+  it('should change the prices of all products', () => {
+    const product1 = new Product(1, 'Product 1', 10);
+    const product2 = new Product(2, 'Product 2', 20);
+    
+    const products = [product1, product2];
+
+    ProductService.increasePrice(products, 100); // Aumento de 100%
+
+    expect(product1.price).toBe(20);
+    expect(product2.price).toBe(40);
+  });
+});
+```
+
+Este teste simula a criação de dois produtos e aplica um aumento de preço em ambos, verificando se a lógica do serviço foi executada corretamente.
+
+**Criando o Product Service**: Após a definição dos testes, passamos para a implementação do serviço. O serviço deve ser responsável por aplicar a lógica de aumento de preço em uma lista de produtos. A classe `ProductService` seria algo assim:
+
+```typescript
+export default class ProductService {
+  static increasePrice(products: Product[], percentage: number): void {
+    products.forEach(product => {
+      product.changePrice(product.price * (percentage / 100) + product.price);
+    });
+  }
+}
+```
+
+Aqui, o método `increasePrice` recebe uma lista de produtos e uma porcentagem, aplicando o aumento em cada item da lista.
+
+**Considerações sobre Eficiência**: Ao trabalhar com um número pequeno de produtos, essa abordagem é eficiente. No entanto, imagine um cenário com um milhão de produtos, como em uma grande loja virtual. A abordagem de trazer todos os produtos para a memória, iterar sobre eles e, em seguida, persistir as mudanças individualmente não é escalável. O processo poderia consumir muito tempo e memória, além de gerar múltiplas operações no banco de dados.
+
+Nesses casos, a melhor prática seria utilizar uma operação em lote diretamente no banco de dados, com um comando SQL que realize a alteração em todos os registros de uma só vez, evitando a sobrecarga de processamento em memória.
+
+**Conclusão**: Ao implementar um Domain Service, devemos balancear a pureza conceitual com a eficiência prática. Em cenários onde as regras de negócio envolvem grandes volumes de dados, é crucial evitar extremismos e considerar soluções que integrem de forma eficiente a lógica de negócio com a persistência de dados, como a execução de operações em massa no banco de dados. O bom senso e a experiência devem guiar o uso correto de cada abordagem.
+
+## Explorando o Padrão de Repositório no Desenvolvimento de Software: Conceitos e Implementação Prática
+
+O padrão de repositório é amplamente utilizado no design de software orientado a domínio (DDD) e possui um papel fundamental na separação entre o domínio de negócios e a camada de infraestrutura. Ao abstrair o acesso a dados, o repositório torna possível lidar com a persistência de dados de forma mais controlada, tornando o sistema mais modular e permitindo a troca de tecnologias de armazenamento sem impactar o restante da aplicação.
+
+**O Que é o Padrão de Repositório?**: No contexto de DDD, um repositório pode ser comparado a uma coleção de dados que permite o armazenamento e recuperação de objetos de domínio, os quais representam as regras e a lógica do negócio. Esses objetos são chamados de agregados e podem conter entidades e objetos de valor. A principal característica de um agregado é que ele deve manter a consistência ao longo do seu ciclo de vida; ou seja, o estado dos dados ao serem recuperados deve ser exatamente o mesmo de quando foram persistidos.
+
+**Quando Utilizar um Repositório?**: O repositório é ideal para abstrair o banco de dados e isolar a lógica de acesso aos dados do restante da aplicação. No entanto, em cenários onde a aplicação requer mapeamento direto de tabelas de banco de dados a objetos, o uso de Data Access Objects (DAOs) pode ser mais apropriado. Os repositórios são recomendados para situações onde há uma relação um-para-um entre um agregado e o repositório, representando coleções em memória que são sincronizadas com o banco de dados.
+
+**Interfaces e Desacoplamento**: Um dos princípios do DDD é evitar o acoplamento direto entre o domínio e a implementação de persistência, garantindo que o domínio permaneça isolado e sem dependências diretas de tecnologias específicas de banco de dados. Para isso, as interfaces de repositório são essenciais. Elas definem um contrato para as operações de persistência, como `create`, `update`, `find`, e `findAll`, sem especificar detalhes técnicos de armazenamento.
+
+A prática de criação de interfaces genéricas também ajuda a tornar o repositório mais flexível. Com a utilização de Generics, é possível definir um contrato genérico de repositório que pode ser implementado para diferentes tipos de agregados. Isso permite que o repositório trate cada agregado conforme as especificidades de cada um, sem violar as regras do domínio.
+
+**A Importância da Camada de Infraestrutura**: Para evitar a sobrecarga de responsabilidades, o padrão DDD recomenda dividir o sistema em camadas bem definidas. A camada de infraestrutura lida com todos os aspectos de comunicação externa, incluindo o banco de dados. Nessa estrutura, a infraestrutura é separada do domínio, e o repositório serve como uma ponte que permite ao domínio acessar dados sem conhecer detalhes específicos de como esses dados são armazenados ou recuperados.
+
+**Implementação Prática de um Repositório**: A implementação de um repositório envolve a definição de uma interface no domínio e a criação de uma implementação concreta na camada de infraestrutura. A interface define os métodos necessários, enquanto a camada de infraestrutura lida com a lógica real de persistência, seja em um banco de dados relacional ou em um banco orientado a documentos.
+
+No exemplo, a criação de repositórios específicos para agregados, como o `ProductRepository`, mostra como um repositório específico pode estender um repositório genérico e oferecer métodos adicionais para atender as necessidades específicas do agregado.
+
+**Conclusão**: O padrão de repositório é um componente poderoso no design de software, especialmente em DDD. Ele fornece uma abstração que simplifica o acesso aos dados e aumenta a flexibilidade e a testabilidade do sistema. Ao manter o domínio isolado e o acesso a dados organizado, o padrão de repositório ajuda a construir aplicações robustas e escaláveis, prontas para evoluir de forma incremental e modular.

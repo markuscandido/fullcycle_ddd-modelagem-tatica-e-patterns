@@ -9,6 +9,13 @@ const config: Config = {
   transform: {
     "^.+\\.(t|j)sx?$": "@swc/jest", // Passando apenas a string
   },
+  collectCoverageFrom: [
+    "src/**/*.{ts,tsx}", // Inclui todos os arquivos TypeScript na pasta src
+    "!src/**/*.d.ts",    // Exclui os arquivos de declaração de tipos
+    "!src/**/*.interface.ts",    // Exclui os arquivos de declaração de tipos
+    "!src/main.ts",    // Exclui os arquivos de declaração de tipos
+    "!src/**/index.ts",  // Exclui arquivos que apenas exportam outros módulos
+  ],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
