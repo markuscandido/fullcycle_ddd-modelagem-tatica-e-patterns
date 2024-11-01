@@ -295,3 +295,4 @@ A prática de criação de interfaces genéricas também ajuda a tornar o reposi
 No exemplo, a criação de repositórios específicos para agregados, como o `ProductRepository`, mostra como um repositório específico pode estender um repositório genérico e oferecer métodos adicionais para atender as necessidades específicas do agregado.
 
 **Conclusão**: O padrão de repositório é um componente poderoso no design de software, especialmente em DDD. Ele fornece uma abstração que simplifica o acesso aos dados e aumenta a flexibilidade e a testabilidade do sistema. Ao manter o domínio isolado e o acesso a dados organizado, o padrão de repositório ajuda a construir aplicações robustas e escaláveis, prontas para evoluir de forma incremental e modular.
+
